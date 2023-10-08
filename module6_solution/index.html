@@ -6,6 +6,7 @@
     <script src="./angular.min.js"></script>
     <script src="./app.js"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <style>
       .message {
         font-size: 1.3em;
@@ -23,7 +24,7 @@
           id="lunch-menu"
           type="text"
           placeholder="list comma separated dishes you usually have for lunch"
-          class="form-control"
+          class="form-control {{border}}"
         />
       </div>
       <div class="form-group">
@@ -31,7 +32,7 @@
           Check If Too Much
         </button>
       </div>
-      <div class="form-group message">{{showMessage}}</div>
+      <div class="form-group message {{color}}">{{showMessage}}</div>
     </div>
   </body>
 </html>
