@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListCheckOff" lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./angular.min.js"></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shopping List Check Off</h1>
+
+      <div class="row">
+        <!-- To Buy List -->
+        <div ng-controller="ToBuyController as buyCtrl" class="col-md-6">
+          <h2>To Buy:</h2>
+          <ul>
+            <li ng-repeat="(item, obj) in buyCtrl.items">
+              Buy
+              <input ng-model="obj.quantity" type="number" />
+              {{item}}
+              <button
+                ng-click="buyCtrl.buyItem(item, obj.quantity, obj.pricePerItem)"
+                class="btn btn-default"
+              >
+                <span class="glyphicon glyphicon-ok"></span> Bought
+              </button>
+            </li>
+          </ul>
+          <div ng-if="buyCtrl.isEverythingBought()" class="emptyMessage">
+            Everything is bought!
+          </div>
+        </div>
+
+        <!-- Already Bought List -->
+        <div
+          ng-controller="AlreadyBoughtController as boughtCtrl"
+          class="col-md-6"
+        >
+          <h2>Already Bought:</h2>
+          <ul>
+            <li ng-repeat="(item, obj) in boughtCtrl.items">
+              Bought {{obj.quantity}} {{item}} for
+              {{boughtCtrl.totalCost(obj.quantity, obj.pricePerItem)}}
+            </li>
+          </ul>
+          <div ng-if="boughtCtrl.isNothingBought()" class="emptyMessage">
+            Nothing bought yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
