@@ -28,13 +28,7 @@
       </div>
       <div>
         <ul>
-          <li ng-repeat="item in found track by $index">
-            <found-item></found-item>
-
-            <button ng-click="ctrl.removeItem($index)" class="btn btn-default">
-              Don't want this one!"
-            </button>
-          </li>
+          <found-item ng-repeat="item in found"></found-item>
         </ul>
       </div>
     </div>

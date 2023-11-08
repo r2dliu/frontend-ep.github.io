@@ -11,7 +11,7 @@
 
   function FoundItem() {
     var ddo = {
-      template: "{{item.name}} {{item.short_name}} {{item.description}}"
+      templateUrl: "foundItem.html"
     }
 
     return ddo
@@ -46,11 +46,17 @@
     $scope.nothing = ""
 
     this.getMatched = function () {
+      if (!this.searchQuery) {
+        $scope.found = []
+        $scope.nothing = "Nothing found"
+        return
+      }
+
       MenuSearchService.getMatchedMenuItems(this.searchQuery).then((result) => {
         $scope.$apply(function () {
           $scope.found = result
         });
-        if (!this.found || !this.found.length) {
+        if (!$scope.found || !$scope.found.length) {
           $scope.$apply(function () {
             $scope.nothing = "Nothing found"
           });
