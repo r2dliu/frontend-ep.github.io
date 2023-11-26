@@ -13,3 +13,5 @@
 ## module 7 solution at https://r2dliu.github.io/frontend-ep.github.io/module7_solution/
 
 ## module 8 solution at https://r2dliu.github.io/frontend-ep.github.io/module8_solution/
+
+## module 9 solution at https://r2dliu.github.io/frontend-ep.github.io/module9_solution/
