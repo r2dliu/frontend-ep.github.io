@@ -1,0 +1,73 @@
+<div id="main-content" class="container">
+  <form name="form">
+    <div>
+      <input type="text" name="firstname" ng-model="ctrl.firstname" required />
+      <span ng-if="(form.firstname.$error.required) && form.firstname.$touched">
+        First name is required
+      </span>
+    </div>
+    <div>
+      <input type="text" name="lastname" ng-model="ctrl.lastname" required />
+      <span ng-if="(form.lastname.$error.required) && form.lastname.$touched">
+        Last name is required
+      </span>
+    </div>
+    <div>
+      <input
+        type="tel"
+        name="phone"
+        ng-model="ctrl.phone"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        required
+      />
+      <span ng-if="(form.phone.$error.required) && form.phone.$touched">
+        Phone is required
+      </span>
+      <span ng-if="(form.phone.$invalid) && form.phone.$touched">
+        Must be in form xxx-xxx-xxxx
+      </span>
+    </div>
+    <div>
+      <input
+        type="email"
+        name="email"
+        ng-model="ctrl.email"
+        pattern=".+@.+\.com"
+        size="30"
+        required
+      />
+      <span ng-if="(form.email.$error.required) && form.email.$touched">
+        Email is required
+      </span>
+      <span ng-if="(form.email.$invalid) && form.email.$touched">
+        Must be in form xxx@xxx.com
+      </span>
+    </div>
+    <div>
+      <label for="number">Menu number of your favorite dish:</label>
+      <input
+        id="short_name"
+        name="short_name"
+        type="text"
+        ng-blur="!(form.short_name.$invalid) && ctrl.onBlur()"
+        ng-model="ctrl.short_name"
+        minlength="2"
+        maxlength="2"
+        required
+      />
+      <span
+        ng-if="(form.short_name.$error.required) && form.short_name.$touched"
+      >
+        Menu number is required
+      </span>
+      <span ng-if="(ctrl.failed)"> No such menu number exists </span>
+      <span ng-if="(form.short_name.$invalid) && form.short_name.$touched">
+        Needs to be a letter followed by a number i.e "L0"
+      </span>
+    </div>
+    <button ng-disabled="form.$invalid" ng-click="ctrl.onSubmit()">
+      Submit
+    </button>
+    <span ng-if="(ctrl.favorite)"> Your information has been saved </span>
+  </form>
+</div>

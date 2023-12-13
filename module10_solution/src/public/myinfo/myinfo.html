@@ -1,0 +1,22 @@
+<div id="main-content" class="container">
+  <div ng-if="!ctrl.data">
+    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+  </div>
+  <div ng-if="ctrl.data">
+    <div>
+      <img
+        class="img-responsive"
+        width="250"
+        height="150"
+        ng-src="{{ctrl.imgsrc}}"
+        src="{{ctrl.imgsrc}}"
+      />
+    </div>
+    <div>{{ctrl.data.favorite.name}}</div>
+    <div>{{ctrl.data.favorite.description}}</div>
+    <div>{{ctrl.data.firstname}}</div>
+    <div>{{ctrl.data.lastname}}</div>
+    <div>{{ctrl.data.phone}}</div>
+    <div>{{ctrl.data.email}}</div>
+  </div>
+</div>
